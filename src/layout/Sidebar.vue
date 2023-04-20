@@ -47,42 +47,43 @@ let handleWindowResize = () => {
                        
                         <router-link to="/dashboards/dashboard-version-one" tag="li" class="nav-item">
                             <div class="nav-item-hold">
-                                <i class="i-Bar-Chart text-3xl"></i>
-                                <p>Dashboard</p>
+                                <i class="i-Home-Window text-3xl"></i>
+                                <p>Home</p>
                             </div>
                         </router-link>
                         <router-link to="/components/button" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Wallet text-3xl"></i>
-                                <p>Buttons</p>
+                                <p>Cronograma</p>
                             </div>
                         </router-link>
                         <router-link to="/profile/profileTwo" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Find-User text-3xl"></i>
-                                <p>Profile</p>
+                                <p>Empresas</p>
+                            </div>
+                        </router-link>
+                        <router-link to="/dashboards/dashboard-version-one" tag="li" class="nav-item">
+                            <div class="nav-item-hold">
+                                <i class="i-Mail text-3xl"></i>
+                                <p>Contactos</p>
                             </div>
                         </router-link>
                         
                         <router-link to="/signIn" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Checked-User text-3xl"></i>
-                                <p>Sign In</p>
+                                <p>Login</p>
                             </div>
                         </router-link>
-                       <!--<router-link to="/signUp" tag="li" class="nav-item">
-                            <div class="nav-item-hold">
-                                <i class="i-Checked-User text-3xl"></i>
-                                <p>Sign Up</p>
-                            </div>
-                        </router-link>
+                       
 
-                        <a href="https://aatorx-vue-doc.vercel.app/" tag="a" class="nav-item" target="_blank">
+                        <!--<a href="https://aatorx-vue-doc.vercel.app/" tag="a" class="nav-item" target="_blank">
                             <div class="nav-item-hold">
                                 <i class="i-File-Word text-3xl"></i>
                                 <p>Doc</p>
                             </div>
-                        </a>-->
+                        </a> -->
                     </ul>
                 </perfect-scrollbar>
             </div>
