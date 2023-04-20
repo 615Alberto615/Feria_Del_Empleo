@@ -29,6 +29,12 @@ const routes = [
                         component: () =>
                             import('../views/dashboards/Dashboards.v1.vue'),
                     },
+                    {
+                        path: 'dashboard-version-two',
+                        name: 'dashboard-version-two',
+                        component: () =>
+                            import('../views/dashboards/Dashboards.v2.vue'),
+                    },
                 ],
             },
             {

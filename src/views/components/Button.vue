@@ -1,5 +1,5 @@
 <script setup>
-import Breadcrumb from '@/components/Breadcrumbs.vue'
+
 const colors = [
   {
     colorName: 'bg-primary text-white',
