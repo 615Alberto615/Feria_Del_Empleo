@@ -63,7 +63,7 @@ let handleWindowResize = () => {
                                 <p>Empresas</p>
                             </div>
                         </router-link>
-                        <router-link to="/dashboards/dashboard-version-two " tag="li" class="nav-item">
+                        <router-link to="/dashboards/dashboard-version-two" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Mail text-3xl"></i>
                                 <p>Contactos</p>
