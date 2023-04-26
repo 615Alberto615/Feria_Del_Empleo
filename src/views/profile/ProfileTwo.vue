@@ -35,7 +35,7 @@ const companies = [
     {
         id: 2,
         name: 'Empresa 2',
-        category: 'Agencia',
+        category: 'Agencia de ...',
         logo: '/bcp.png',
         description: 'Descripcion general de lo que es la empresa...',
         socialMedia: {
