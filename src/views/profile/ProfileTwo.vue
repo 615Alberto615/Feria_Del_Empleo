@@ -4,7 +4,7 @@ import CompanyModal from './CompanyModal.vue';
 const companies = [
     {
         id: 1,
-        name: 'Empresa 1',
+        name: 'BNB',
         category: 'Banco',
         logo: '/bnb.png',
         description: 'Descripcion general de lo que es la empresa...',
@@ -15,27 +15,27 @@ const companies = [
             instagram: 'https://www.instagram.com/',
         },
         videoUrl: 'https://www.youtube.com/embed/_i0w6AOO4mY',
-        summary: 'Lorem ipsum dolor sit',
+        summary: 'Banco Nacional de Bolivia S.A. (BNB) es una entidad financiera...',
         contactName: 'Nombre de contacto',
         contactEmail: 'email@email.com',
         contactPhone: '12345678',
         jobOffers: [
             {
                 name: 'Puesto 1',
-                requirements: 'L',
-                functions: 'L',
+                requirements: 'requerimientos',
+                functions: 'funciones',
             },
             {
                 name: 'Puesto 2',
-                requirements: 'L',
-                functions: 'L',
+                requirements: 'R',
+                functions: 'F',
             },
         ],
     },
     {
         id: 2,
         name: 'Empresa 2',
-        category: 'Empresa de ...',
+        category: 'Agencia',
         logo: '/bcp.png',
         description: 'Descripcion general de lo que es la empresa...',
         socialMedia: {
@@ -112,7 +112,7 @@ const closeCompanyModal = () => {
           type="text"
           v-model="searchText"
           placeholder="Buscar empresa..."
-          class="border border-gray-300 rounded p-2 w-full"
+          class="border border-gray-300 rounded-full p-2 w-full"
         />
       </div>
       <div class="grid grid-cols-12 gap-5">

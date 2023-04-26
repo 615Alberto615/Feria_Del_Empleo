@@ -55,7 +55,42 @@
             <p class="text-sm font-medium">Correo electrónico: {{ company.contactEmail }}</p>
             <p class="text-sm font-medium">Celular: {{ company.contactPhone }}</p>
             </div>
+            <div class="mt-4">
+              <a
+                :href="company.socialMedia.linkedin"
+                target="_blank"
+                class="mr-2 hover:text-primary"
+                rel="noopener noreferrer"
+              >
+                <i class="i-Linkedin-2 text-xs"></i>
+              </a>
+              <a
+                :href="company.socialMedia.facebook"
+                target="_blank"
+                class="mr-2 hover:text-primary"
+                rel="noopener noreferrer"
+              >
+                <i class="i-Facebook-2 text-xs"></i>
+              </a>
+              <a
+                :href="company.socialMedia.twitter"
+                target="_blank"
+                class="mr-2 hover:text-primary"
+                rel="noopener noreferrer"
+              >
+                <i class="i-Twitter text-xs"></i>
+              </a>
+              <a
+                :href="company.socialMedia.instagram"
+                target="_blank"
+                class="mr-2 hover:text-primary"
+                rel="noopener noreferrer"
+              >
+                <i class="i-Instagram text-xs"></i>
+              </a>
+            </div>
         </BaseCard>
+        
       </div>
 
     </div>
