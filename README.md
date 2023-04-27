@@ -3,9 +3,7 @@ Nombres:
         - Mayra Valdez
         - Alberto Encinas
 Avance:
-      - Realizamos la estructura del proyecto(header, footer, slidebar, index y rutas) y las bases para las paginas principales del proyecto (contactos, home, empresas,         cronograma y un login no funcional).
+      - Empresas: Terminamos la página de empresas donde en primera instancia se encuentra una sección de búsqueda según el nombre de la empresa o la categoría,                           posteriormente se encuentran algunas empresas de ejemplo, pero ya se puede agregar todas las empresas con toda su información desde el codigo, 
+                  donde se creara automacticamente una tarjeta con los datos básicos de la empresa y una sección con información más detallada de la misma.
       
-Estructura: Todos.
-Contactos: Mayra.
-Home y Empresas: Alberto.
-Cronograma: Cristhian.
+Empresas: Alberto.
