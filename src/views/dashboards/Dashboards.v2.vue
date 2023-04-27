@@ -119,7 +119,7 @@
         direccion: 'BLOQUE D, PISO 5, AULA D29',
         telefono: '2782222 Interno 2723',
         directo: '2692723',
-        celular: '76521445',
+        celular: '76521445 ',
         fecha: '',
       };
     },
