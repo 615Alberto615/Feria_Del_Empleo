@@ -51,7 +51,7 @@ let handleWindowResize = () => {
                                 <p>Home</p>
                             </div>
                         </router-link>
-                        <router-link to="/components/button" tag="li" class="nav-item">
+                        <router-link to="/schedule/Cronograma" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Wallet text-3xl"></i>
                                 <p>Cronograma</p>

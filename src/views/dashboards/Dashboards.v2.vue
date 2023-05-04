@@ -5,7 +5,7 @@
         dashboardTwo, 
         splineAreaWidgetTwo, 
         splineAreaWidgetThree
-    } from '@/data/dashboard.v1.js';
+    } from '@/data/dashboard.v2.js';
    
     
 </script><template>

@@ -38,18 +38,18 @@ const routes = [
                 ],
             },
             {
-                path: '/components',
-                name: 'components',
-                component: () => import('../views/components/index.vue'),
+                path: '/schedule',
+                name: 'Schedule',
+                component: () => import('../views/schedule/index.vue'),
                 meta: {
-                    title: 'Components',
+                    title: 'Schedule',
                 },
                 children: [
                     {
-                        path: 'button',
-                        name: 'button',
+                        path: 'Cronograma',
+                        name: 'Cronograma',
                         component: () =>
-                            import('../views/components/Button.vue'),
+                            import('../views/schedule/Cronograma.vue'),
                     },
                 ],
             },
