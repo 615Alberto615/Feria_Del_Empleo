@@ -16,6 +16,22 @@ const routes = [
 
         children: [
             {
+                path: '/contactos',
+                name: 'contactos',
+                component: () => import('../views/contactos/index.vue'),
+                meta: {
+                    title: 'contactos',
+                },
+                children: [
+                    {
+                        path: 'contactos',
+                        name: 'contactos',
+                        component: () =>
+                            import('../views/contactos/contactos.vue'),
+                    },
+                ],
+            },
+            {
                 path: '/dashboards',
                 name: 'Dashboards',
                 component: () => import('../views/dashboards/index.vue'),

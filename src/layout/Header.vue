@@ -100,7 +100,7 @@ const sideBarToggle = () => {
                         focus:outline-none
                     "
                 >
-                    <div class="">
+                    <div class=""><!--
                         <MenuItem v-slot="{ active }">
                             <button
                                 :class="[
@@ -112,7 +112,7 @@ const sideBarToggle = () => {
                             >
                                 Account Settings
                             </button>
-                        </MenuItem>
+                        </MenuItem>-->
                         
                         <MenuItem v-slot="{ active }">
                             <button

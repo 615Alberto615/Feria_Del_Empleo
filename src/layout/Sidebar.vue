@@ -51,6 +51,7 @@ let handleWindowResize = () => {
                                 <p>Home</p>
                             </div>
                         </router-link>
+                        
                         <router-link to="/schedule/Cronograma" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Wallet text-3xl"></i>
@@ -63,7 +64,7 @@ let handleWindowResize = () => {
                                 <p>Empresas</p>
                             </div>
                         </router-link>
-                        <router-link to="/dashboards/dashboard-version-two" tag="li" class="nav-item">
+                        <router-link to="/contactos/contactos" tag="li" class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Mail text-3xl"></i>
                                 <p>Contactos</p>
