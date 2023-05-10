@@ -1,7 +1,9 @@
-import { createApp } from 'vue'
+import { createApp, markRaw } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from "pinia";
 import store from './store'
+
 import './assets/scss/global.scss'
 import './index.css'
 import BaseCard from './components/Base/BaseCard.vue'
@@ -14,6 +16,9 @@ import VueApexCharts from "vue3-apexcharts";
 
 // globally call 
 
+
+
+
 // app.component('BaseBtn', BaseBtn)
 
 
@@ -22,6 +27,8 @@ createApp(App)
     .component('BaseBtn', BaseBtn)
     .use(PerfectScrollbar)
     .use(VueApexCharts)
+    .use(createPinia()) 
     .use(store)
     .use(router)
     .mount('#app')
+    

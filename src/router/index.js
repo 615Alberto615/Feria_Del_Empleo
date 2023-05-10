@@ -3,6 +3,7 @@ import NotFound from '../views/NotFound.vue'
 import store from '../store'
 import SignIn from '../views/sessions/SignIn.vue'
 import SignUp from '../views/sessions/SignUp.vue'
+import { useUserStore } from '../store/user.js'
 
 const routes = [
     {

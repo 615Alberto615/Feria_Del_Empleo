@@ -45,36 +45,36 @@ let handleWindowResize = () => {
                 <perfect-scrollbar>
                     <ul class="navigation-left">
                        
-                        <router-link to="/dashboards/dashboard-version-one" tag="li" class="nav-item">
+                        <router-link to="/dashboards/dashboard-version-one"  class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Home-Window text-3xl"></i>
                                 <p>Home</p>
                             </div>
                         </router-link>
                         
-                        <router-link to="/schedule/Cronograma" tag="li" class="nav-item">
+                        <router-link to="/schedule/Cronograma"  class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Wallet text-3xl"></i>
                                 <p>Cronograma</p>
                             </div>
                         </router-link>
-                        <router-link to="/profile/profileTwo" tag="li" class="nav-item">
+                        <router-link to="/profile/profileTwo"  class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Find-User text-3xl"></i>
                                 <p>Empresas</p>
                             </div>
                         </router-link>
-                        <router-link to="/contactos/contactos" tag="li" class="nav-item">
+                        <router-link to="/contactos/contactos"  class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Mail text-3xl"></i>
                                 <p>Contactos</p>
                             </div>
                         </router-link>
                          
-                        <router-link to="/signIn" tag="li" class="nav-item">
+                        <router-link to="/signIn"  class="nav-item">
                             <div class="nav-item-hold">
                                 <i class="i-Checked-User text-3xl"></i>
-                                <p>Login</p>
+                                <p>Administrador</p>
                             </div>
                         </router-link>
                        
