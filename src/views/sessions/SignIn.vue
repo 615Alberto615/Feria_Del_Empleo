@@ -1,18 +1,32 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../../store/user";
-
+import { useRouter } from "vue-router"; // Importa useRouter de "vue-router"
+import { defineExpose } from "vue";
 
 const email = ref("");
 const password = ref("");
 
 const userStore = useUserStore();
+const router = useRouter(); // Obtén la instancia de $router aquí
 
 const login = async () => {
-  await userStore.login(email.value, password.value);
+  const response = await userStore.login(email.value, password.value);
+  if (response.error) {
+    alert(response.error);
+  } else {
+    alert("El usuario ha iniciado sesión satisfactoriamente");
+    router.push("/profile/admin1"); // Redirige a la página /profile/admin1 aquí
+  }
 };
 
+defineExpose({
+  email,
+  password,
+  login,
+});
 </script>
+
 <template>
   <div class="auth-layout-wrap flex justify-center min-h-screen flex-col bg-cover items-center" style="background-image: url(/fl.jpg)">
         <div class="container-session-v1 max-w-2xl">

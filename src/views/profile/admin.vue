@@ -118,7 +118,7 @@ const closeCompanyModal = () => {
           class="border border-gray-300 rounded-full p-2 w-full"
         />
       </div>
-      
+      <AddCompany />
       <div class="grid grid-cols-12 gap-5">
         <div
           v-for="company in filteredCompanies"

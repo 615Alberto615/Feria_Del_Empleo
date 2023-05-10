@@ -45,9 +45,8 @@ export const useUserStore=defineStore("user",{
                 }
                 return;
             }
-            this.user=auth.currentUser;
-            alert("El Usuario ha iniciado sesion satisfactoriamente");
-            this.$router.push("/profile/profileTwo");
+            this.user = auth.currentUser;
+            return { success: true };
          }
 
    }  
