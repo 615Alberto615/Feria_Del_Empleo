@@ -4,6 +4,7 @@ import store from '../store'
 import SignIn from '../views/sessions/SignIn.vue'
 import SignUp from '../views/sessions/SignUp.vue'
 import { useUserStore } from '../store/user.js'
+import { auth } from '../firebase'
 
 const routes = [
     {
@@ -89,6 +90,9 @@ const routes = [
                         name: 'admin1',
                         component: () =>
                             import('../views/profile/admin.vue'),
+                        meta: {
+                            auth: true,
+                        }
                     },
                 ],
             },
@@ -117,5 +121,14 @@ router.afterEach(() => {
         store.commit('largeSidebar/toggleSidebarProperties')
     }
 })
-
-export default router
+router.beforeEach((to, from, next) => {
+    if (to.name === 'signIn' && auth.currentUser) {
+      next('admin1');
+    } else if (to.matched.some((record) => record.meta.auth) && !auth.currentUser) {
+      next('signIn');
+    } else {
+      next();
+    }
+  });
+  
+export default router;
