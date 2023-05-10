@@ -16,6 +16,8 @@
     "@headlessui/vue": "^1.4.1",
     "apexcharts": "^3.28.1",
     "firebase": "^9.21.0",
+    "@firebase/auth": "^0.x.x",
+"@firebase/firestore": "^3.x.x",
     "pinia": "^2.0.36",
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",

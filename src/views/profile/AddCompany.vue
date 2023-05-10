@@ -73,70 +73,73 @@
       </form>
     </div>
   </template>
-  
-  <script>
- import { ref, inject } from 'vue';
+<script>
+// Asegúrate de que esta línea esté presente y sea la ruta correcta al archivo de configuración de Firebase
+import { ref, inject } from 'vue';
+import { db } from "@/firebase";
+import { collection, addDoc } from 'firebase/firestore';
 
 export default {
   setup() {
-    const companies = inject('companies');
-
     const newCompany = ref({
       id: null,
       name: '',
       category: '',
       logo: '',
-        description: '',
-        videoUrl: '',
-        summary: '',
-        contactName: '',
-        contactEmail: '',
-        contactPhone: '',
-        googleFormUrl: '',
-        socialMedia: {
-          linkedin: '',
-          facebook: '',
-          twitter: '',
-          instagram: '',
-        },
-        jobOffers: {
-          name: '',
-          requirements: '',
-          functions: '',
-        },
-      
-      // ... Otras propiedades de la empresa
-    });
-
-    const addCompany = () => {
-      newCompany.value.id = companies.value.length + 1;
-      companies.value.push({ ...newCompany.value });
-      newCompany.value = {
-        id: null,
+      description: '',
+      videoUrl: '',
+      summary: '',
+      contactName: '',
+      contactEmail: '',
+      contactPhone: '',
+      googleFormUrl: '',
+      socialMedia: {
+        linkedin: '',
+        facebook: '',
+        twitter: '',
+        instagram: '',
+      },
+      jobOffers: {
         name: '',
-        category: '',
-        logo: '',
-        description: '',
-        videoUrl: '',
-        summary: '',
-        contactName: '',
-        contactEmail: '',
-        contactPhone: '',
-        googleFormUrl: '',
-        socialMedia: {
-          linkedin: '',
-          facebook: '',
-          twitter: '',
-          instagram: '',
-        },
-        jobOffers: {
-          name: '',
-          requirements: '',
-          functions: '',
-        },
-        // ... Otras propiedades de la empresa
-      };
+        requirements: '',
+        functions: '',
+      },
+    });
+    const addCompany = async () => {
+  try {
+    // Guarda la nueva empresa en Firestore
+    await addDoc(collection(db, 'companies'), { ...newCompany.value });
+
+    // Restablece el objeto de la nueva empresa
+    newCompany.value = {
+      id: null,
+      name: '',
+      category: '',
+      logo: '',
+      description: '',
+      videoUrl: '',
+      summary: '',
+      contactName: '',
+      contactEmail: '',
+      contactPhone: '',
+      googleFormUrl: '',
+      socialMedia: {
+        linkedin: '',
+        facebook: '',
+        twitter: '',
+        instagram: '',
+      },
+      jobOffers: {
+        name: '',
+        requirements: '',
+        functions: '',
+      },
     };
+  } catch (error) {
+    console.error('Error al agregar la empresa:', error);
+  }
+};
+
 
     return {
       newCompany,
@@ -147,5 +150,31 @@ export default {
 </script>
 
 <style scoped>
-/* Aquí puedes agregar estilos para el componente AddCompany.vue si lo deseas */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  display: block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 </style>
+

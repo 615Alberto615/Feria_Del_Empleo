@@ -1,97 +1,37 @@
-
 <script setup>
-import { ref, computed,provide } from 'vue';
-import AddCompany from './AddCompany.vue';
-import CompanyModal from './CompanyModal.vue';
-const companies = ref([
-    {
-        id: 1,
-        name: 'BNB',
-        category: 'Banco',
-        logo: '/bnb.png',
-        description: 'Descripcion general de lo que es la empresa...',
-        socialMedia: {
-            linkedin: 'https://bo.linkedin.com/',
-            facebook: 'https://es-la.facebook.com/',
-            twitter: 'https://twitter.com/',
-            instagram: 'https://www.instagram.com/',
-        },
-        videoUrl: 'https://www.youtube.com/embed/_i0w6AOO4mY',
-        summary: 'Banco Nacional de Bolivia S.A. (BNB) es una entidad financiera...',
-        contactName: 'Nombre de contacto',
-        contactEmail: 'email@email.com',
-        contactPhone: '12345678',
-        jobOffers: [
-            {
-                name: 'Puesto 1',
-                requirements: 'requerimientos',
-                functions: 'funciones',
-            },
-            {
-                name: 'Puesto 2',
-                requirements: 'R',
-                functions: 'F',
-            },
-        ],
-    },
-    {
-        id: 2,
-        name: 'Empresa 2',
-        category: 'Agencia de ...',
-        logo: '/bcp.png',
-        description: 'Descripcion general de lo que es la empresa...',
-        socialMedia: {
-            linkedin: 'https://bo.linkedin.com/',
-            facebook: 'https://es-la.facebook.com/',
-            twitter: 'https://twitter.com/',
-            instagram: 'https://www.instagram.com/',
-        },
+import { ref, computed, onMounted, provide } from "vue";
+import AddCompany from "./AddCompany.vue";
+import CompanyModal from "./CompanyModal.vue";
+import { db } from "@/firebase";
+import { collection, onSnapshot } from "firebase/firestore";
 
-        
-    },
-    {
-        id: 3,
-        name: 'Empresa 3',
-        category: 'Empresa de ...',
-        logo: '/mercan.jpg',
-        description: 'Descripcion general de lo que es la empresa...',
-        socialMedia: {
-            linkedin: 'https://bo.linkedin.com/',
-            facebook: 'https://es-la.facebook.com/',
-            twitter: 'https://twitter.com/',
-            instagram: 'https://www.instagram.com/',
-        },
-        
-    },
-    {
-        id: 4,
-        name: 'Empresa 4',
-        category: 'Empresa de ...',
-        logo: '/union.png',
-        description: 'Descripcion general de lo que es la empresa...',
-        socialMedia: {
-            linkedin: 'https://bo.linkedin.com/',
-            facebook: 'https://es-la.facebook.com/',
-            twitter: 'https://twitter.com/',
-            instagram: 'https://www.instagram.com/',
-        },
-        
-    },
-    
-    
-    // ... más objetos de empresas
-]);
-provide('companies', companies);
-const searchText = ref('');
+const companies = ref([]);
+
+onMounted(() => {
+  const unsubscribe = onSnapshot(collection(db, "companies"), (snapshot) => {
+    companies.value = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  });
+
+  return () => {
+    unsubscribe();
+  };
+});
+
+provide("companies", companies);
+
+const searchText = ref("");
 
 const filteredCompanies = computed(() => {
-    return companies.value.filter((company) => {
-        const searchValue = searchText.value.toLowerCase();
-        return (
-            company.name.toLowerCase().includes(searchValue) ||
-            company.category.toLowerCase().includes(searchValue)
-        );
-    });
+  return companies.value.filter((company) => {
+    const searchValue = searchText.value.toLowerCase();
+    return (
+      company.name.toLowerCase().includes(searchValue) ||
+      company.category.toLowerCase().includes(searchValue)
+    );
+  });
 });
 
 const showModal = ref(false);
@@ -106,7 +46,6 @@ const closeCompanyModal = () => {
   showModal.value = false;
 };
 </script>
-
 <template>
     <div class="container mx-auto">
       <Breadcrumbs parentTitle="Dashboard" subParentTitle="Dashboard v1" />
