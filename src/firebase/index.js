@@ -3,13 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDO1tkwPpvi4z8U4hHAC_-baRACMEHYo2Q",
-  authDomain: "feriaempleo-44aa2.firebaseapp.com",
-  projectId: "feriaempleo-44aa2",
-  storageBucket: "feriaempleo-44aa2.appspot.com",
-  messagingSenderId: "583669220049",
-  appId: "1:583669220049:web:6d0cf0620168a0afca7bf0",
-  measurementId: "G-7455938Y2N"
+  apiKey: "AIzaSyDyiBjHlpRhNa4bzzruwEkA-009-XbZfHk",
+  authDomain: "feriadelempleo-c3d6f.firebaseapp.com",
+  databaseURL: "https://feriadelempleo-c3d6f-default-rtdb.firebaseio.com",
+  projectId: "feriadelempleo-c3d6f",
+  storageBucket: "feriadelempleo-c3d6f.appspot.com",
+  messagingSenderId: "975115630878",
+  appId: "1:975115630878:web:150268064a192ba38a710f",
+  measurementId: "G-PW5ER7Y6V9"
 };
 
 // Initialize Firebase
