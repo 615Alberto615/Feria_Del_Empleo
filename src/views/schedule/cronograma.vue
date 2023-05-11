@@ -36,32 +36,24 @@ export default {
         eventClick: this.handleEventClick,
         locale: 'es'
       },
-      events: [
-
-      ]
     }
   },
   mounted() {
-  const calendarApi = this.$refs.fullCalendarRef.getApi()
+    const calendarApi = this.$refs.fullCalendarRef.getApi()
 
-  // Escuchar cambios en la colección de eventos
-  const eventsRef = collection(db, 'events');
-  onSnapshot(eventsRef, (snapshot) => {
-    const newEvents = []
-    snapshot.forEach((doc) => {
-      newEvents.push({ id: doc.id, ...doc.data() })
-    })
-    // Actualizar el array de eventos con los nuevos eventos
-    this.events = newEvents
+    // Escuchar cambios en la colección de eventos
+    const eventsRef = collection(db, 'events');
+    onSnapshot(eventsRef, (snapshot) => {
+      const newEvents = []
+      snapshot.forEach((doc) => {
+        newEvents.push({ id: doc.id, ...doc.data() })
+      })
 
-    // Actualizar la fuente de eventos con el nuevo array de eventos
-    calendarApi.removeAllEvents()
-    calendarApi.addEventSource(this.events)
-  });
-
-  const savedEvents = JSON.parse(localStorage.getItem('events')) || []
-  calendarApi.addEventSource(savedEvents)
-},
+      // Actualizar la fuente de eventos con el nuevo array de eventos
+      calendarApi.removeAllEvents()
+      calendarApi.addEventSource(newEvents)
+    });
+  },
 
   methods: {
     async handleDateClick(dateInfo) {
@@ -75,7 +67,7 @@ export default {
       if (description === null) {
         // Si el usuario ha hecho clic en "Cancelar"
         return
-      }
+      }      
 
       // Crear un nuevo objeto de evento
       const newEvent = {
@@ -105,9 +97,9 @@ export default {
       const eventDescription = clickInfo.event.extendedProps.description
       const eventTitle = clickInfo.event.title
       const eventStart = clickInfo.event.start ? clickInfo.event.start.toLocaleString() : ''
-      const eventEnd = clickInfo.event.end ? clickInfo.event.end.toLocaleString() : ''
+      
 
-      const alertMessage = `Descripción: ${eventDescription}\nInicio: ${eventStart}\nFin: ${eventEnd}`
+      const alertMessage = `Descripción: ${eventDescription}\nInicio: ${eventStart}`
       alert(alertMessage)
     }  
   },
@@ -126,7 +118,6 @@ export default {
       title: '',
       description: '',
       eventStart: '',
-      eventEnd: '',
     });
     const addEvent = async () => {
       try {
@@ -139,7 +130,6 @@ export default {
           title: '',
           description: '',
           eventStart: '',
-          eventEnd: '',
         };
       } catch (error) {
         console.error('Error al agregar el evento:', error);
