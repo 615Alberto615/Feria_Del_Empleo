@@ -38,23 +38,32 @@
            </tr>
         </thead>
         <tbody>
-          <tr v-for="(job, index) in company.jobOffers" :key="index">
-            <td class="border px-4 py-2">{{ job.name }}</td>
-            <td class="border px-4 py-2">{{ job.requirements }}</td>
-            <td class="border px-4 py-2">{{ job.functions }}</td>
-          </tr>
+          
+            <td class="border px-4 py-2">{{ company.jobOffers.name }}</td>
+            <td class="border px-4 py-2">{{ company.jobOffers.requirements }}</td>
+            <td class="border px-4 py-2">{{ company.jobOffers.functions }}</td>
+          
         </tbody>
       </table>
 
       <!-- Agregar información de contacto -->
       <div class="mt-6">
         <BaseCard>
-            <p class="text-lg font-medium">Contacto</p>
-            <div class="mt-2">
-            <p class="text-sm font-medium">Nombre: {{ company.contactName }}</p>
-            <p class="text-sm font-medium">Correo electrónico: {{ company.contactEmail }}</p>
-            <p class="text-sm font-medium">Celular: {{ company.contactPhone }}</p>
-            </div>
+  <p class="text-lg font-medium">Contacto</p>
+  <div class="mt-2">
+    <p class="text-sm font-medium">Nombre: {{ company.contactName }}</p>
+    <p class="text-sm font-medium">Email de Contacto: {{ company.contactEmail }}</p>
+    <p class="text-sm font-medium">Celular de Contacto: {{ company.contactPhone }}</p>
+    <div class="flex justify-center mt-2">
+      <button
+        @click="goToGoogleForm"
+        class="text-sm font-medium bg-blue-500 text-white py-2 px-4 rounded inline-flex items-center"
+      >
+        <i class="fas fa-external-link-alt mr-2"></i>
+        Ir al formulario de Google
+      </button>
+    </div>
+  </div>
             <div class="mt-4">
               <a
                 :href="company.socialMedia.linkedin"
@@ -115,6 +124,9 @@
       emitClose() {
         this.$emit('close');
       },
+      goToGoogleForm() {
+      window.open(this.company.googleFormUrl, "_blank", "noopener noreferrer");
+    },
     },
   };
   </script>

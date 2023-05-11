@@ -3,16 +3,20 @@ import { ref, computed, onMounted, provide } from "vue";
 import AddCompany from "./AddCompany.vue";
 import CompanyModal from "./CompanyModal.vue";
 import { db } from "@/firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 
 const companies = ref([]);
 
 onMounted(() => {
   const unsubscribe = onSnapshot(collection(db, "companies"), (snapshot) => {
-    companies.value = snapshot.docs.map((doc) => ({
+    const loadedCompanies = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
+
+    console.log("Loaded companies:", loadedCompanies);
+
+    companies.value = loadedCompanies;
   });
 
   return () => {
@@ -45,7 +49,18 @@ const showCompanyModal = (company) => {
 const closeCompanyModal = () => {
   showModal.value = false;
 };
+
+const deleteCompany = async (companyId) => {
+  console.log("Deleting company with id:", companyId); // Añade esta línea
+  try {
+    await deleteDoc(doc(db, "companies", companyId));
+  } catch (error) {
+    console.error("Error al eliminar la empresa:", error);
+  }
+};
+
 </script>
+
 <template>
     <div class="container mx-auto">
       <Breadcrumbs parentTitle="Dashboard" subParentTitle="Dashboard v1" />
@@ -94,6 +109,13 @@ const closeCompanyModal = () => {
               @click="showCompanyModal(company)"
             >
               Más información
+            </BaseBtn>
+            <BaseBtn
+              sm
+              class="bg-red-500 text-white rounded-full ml-2"
+              @click="deleteCompany(company.id)"
+            >
+              Eliminar
             </BaseBtn>
             <div class="mt-4">
               <a
