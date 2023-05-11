@@ -17,7 +17,6 @@
   <a href="https://icons8.com/illustrations/author/mNCLibjicqSz">Julia K</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
   </div>
 </template>
-
 <script>
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -25,7 +24,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 
 import { ref, inject } from 'vue';
 import { db } from "@/firebase";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc} from 'firebase/firestore';
 import { onSnapshot } from 'firebase/firestore';
 
 export default {
@@ -98,14 +97,36 @@ export default {
       }
     },
     handleEventClick(clickInfo) {
-      const eventDescription = clickInfo.event.extendedProps.description
-      const eventTitle = clickInfo.event.title
-      const eventStart = clickInfo.event.start ? clickInfo.event.start.toLocaleString() : ''
-      
+      const eventId = clickInfo.event.id;
+      const title = clickInfo.event.title;
+      const start = clickInfo.event.start;
 
-      const alertMessage = `Descripción: ${eventDescription}\nInicio: ${eventStart}`
-      alert(alertMessage)
-    }  
+      // Mostrar una alerta con la información del evento
+      const eventInfo = `Titulo: ${title}\nInicio: ${start}`;
+      if (confirm(eventInfo + "\n¿Desea eliminar el evento?")) {
+        this.handleEventDelete(eventId);
+      }
+    },
+    async handleEventDelete(eventId) {
+      try {  
+
+        // Eliminar el evento de Firebase Firestore
+        await deleteDoc(doc(db, 'events', eventId))
+
+        // Eliminar el evento del array de eventos
+        this.events = this.events.filter(event => event.id !== eventId)
+
+        // Obtener la instancia del objeto Calendar de FullCalendar
+        const calendarApi = this.$refs.fullCalendarRef.getApi()
+
+        // Actualizar la fuente de eventos con el nuevo array de eventos
+        calendarApi.removeAllEvents()
+        calendarApi.addEventSource(this.events)
+      } catch (error) {
+        console.error('Error al eliminar el evento:', error)
+      }
+    }
+  
   },
   watch: {
     // Observar cambios en la matriz de eventos y actualizar el componente FullCalendar
