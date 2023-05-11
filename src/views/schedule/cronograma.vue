@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <center>
-      <p class="text-2xl font-bold">CRONOGRAMA - FERIA DEL EMPLEO UCB</p><br>
-    </center>
-
-    <FullCalendar
-      ref="fullCalendarRef"
-      locale="es"
-      :options="calendarOptions"
-      @dateClick="handleDateClick"
-      @eventClick="handleEventClick"
-    />
+  <div class="container mx-auto">
+    <Breadcrumbs parentTitle="Dashboard" subParentTitle="Dashboard v1" />
+    <div class="container-fluid mx-auto">
+      <div class="header-container">
+        <h2 class="header-title">Cronograma Feria del Empleo</h2>
+        <img class="header-image" src="../../assets/cronograma3.png" alt="" >
+      </div>
+      <FullCalendar
+        ref="fullCalendarRef"
+        locale="es"
+        :options="calendarOptions"
+        @dateClick="handleDateClick"
+        @eventClick="handleEventClick"
+      />
+    </div>
+  <a href="https://icons8.com/illustrations/author/mNCLibjicqSz">Julia K</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
   </div>
 </template>
 
@@ -147,4 +151,27 @@ export default {
 }
 </script>
 
+<style>
+.container {
+  padding: 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header-image {
+  max-width: 200px;
+  height: auto;
+}
+
+</style>
 
